@@ -82,19 +82,13 @@ static var mensaje: String = "Hello World"
     }()
 
   
-  static func generateSampleData() -> [Shoplist?] {
+  static func generateSampleData()  {
 	let taskContext = persistentContainer.viewContext
 	var rv: [Shoplist] = []
 
 	if(taskContext != nil)
 {
-/*
-	rv = [
-		  generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
-		  generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
-		  generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
-		]
-*/
+
 		rv=[ 
 				generateList(context:taskContext, name:"List A"),
 				generateList(context:taskContext, name:"List B"),
@@ -108,11 +102,11 @@ static var mensaje: String = "Hello World"
 			
 			//fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
 			mensaje=("Error:Blew up trying to save in SampleData::generateListData(): \(error)")
-			return []
+
 		}
 		
 	}
-	return rv
+
   }
 
 /*

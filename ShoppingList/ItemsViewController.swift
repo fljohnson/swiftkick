@@ -35,9 +35,8 @@ class ItemsViewController: UITableViewController {
   
   // MARK: - Properties
 
-  var lists = SampleData.generateSampleData()
-var sections:[NSFetchedResultsSectionInfo]? = nil
-	var junk:Any? = nil
+  SampleData.generateSampleData()
+var frc: NSFetchedResultsController<NSFetchRequestResult>? = nil
 }
 
 // MARK: - IBActions
@@ -81,19 +80,15 @@ private func setupDataSource() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"name == %@","List B")
         
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
-			frc.performFetch()
-			junk = frc
+			try frc.performFetch()
 		}
 		catch {
 			showMessage(msg:"Failed to fetch entities: \(error)")
 			fatalError("Failed to fetch entities: \(error)")
 		}
-		guard sections = frc?.sections else {
-		    showMessage(msg:"No sections in fetchedResultsController")
-		    fatalError("No sections in fetchedResultsController")
-		}
+		
 
 
 }
@@ -116,13 +111,17 @@ extension ItemsViewController {
 	}  
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-    if sections! = nil {
-        return sections!.count
+	
+    if frc != nil {
+        return frc?.sections!.count
     }
     return 0
 }
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
+    guard sections = frc?.sections else {
+		    showMessage(msg:"No sections in fetchedResultsController")
+		    fatalError("No sections in fetchedResultsController")
+	}
     let sectionInfo = sections[section]
     return sectionInfo.numberOfObjects
   }
@@ -132,7 +131,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
                                              for: indexPath) as! ItemCell
     
-    guard let item = (self.junk as? NSFetchedResultsController).object(at: indexPath) else {
+    guard let item = self.frc.object(at: indexPath) else {
 		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
