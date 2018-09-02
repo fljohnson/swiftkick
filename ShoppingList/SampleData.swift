@@ -88,11 +88,13 @@ static var mensaje: String = "Hello World"
 
 	if(taskContext != nil)
 {
+/*
 	rv = [
 		  generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
 		  generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
 		  generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
 		]
+*/
 		rv=[ 
 				generateList(context:taskContext, name:"List A"),
 				generateList(context:taskContext, name:"List B"),
@@ -135,11 +137,11 @@ static var mensaje: String = "Hello World"
 	}
 	*/
 	
-	static func generateList(context:NSManagedObjectContext,name:String) -> Shoplist {
+	static func generateList(context:NSManagedObjectContext,name:String) -> Shoplist? {
 		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist else {
 						
 		                mensaje = ("Error: Failed to create a new Shopping List object!")
-		                return
+		                return nil
 		            }
 		rv.update(name:name)            
 		return rv
