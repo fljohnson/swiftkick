@@ -82,7 +82,7 @@ static var mensaje: String = "Hello World"
     }()
 
   
-  static func generateSampleData() -> [Shoplist] {
+  static func generateSampleData() -> [Shoplist?] {
 	let taskContext = persistentContainer.viewContext
 	var rv: [Shoplist] = []
 

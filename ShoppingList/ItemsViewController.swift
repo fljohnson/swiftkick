@@ -36,7 +36,8 @@ class ItemsViewController: UITableViewController {
   // MARK: - Properties
 
   var lists = SampleData.generateSampleData()
-  private var frc:NSFetchedResultsController?
+var sections:[NSFetchedResultsSectionInfo]? = nil
+	var junk:Any? = nil
 }
 
 // MARK: - IBActions
@@ -63,34 +64,41 @@ extension ItemsViewController {
     tableView.insertRows(at: [indexPath], with: .automatic) 
     */
   }
-}
+
 
 // MARK: - UITableViewDataSource
 
 
-fileprivate func setupTableView() {
+private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         tableView.delegate = self
         setupDataSource()
 }
 
-fileprivate func setupDataSource() {
+private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"name == %@","List B")
         
-        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        try {
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        do {
 			frc.performFetch()
+			junk = frc
 		}
 		catch {
-			showMessage("Failed to fetch entities: \(error)")
+			showMessage(msg:"Failed to fetch entities: \(error)")
 			fatalError("Failed to fetch entities: \(error)")
 		}
+		guard sections = frc?.sections else {
+		    showMessage(msg:"No sections in fetchedResultsController")
+		    fatalError("No sections in fetchedResultsController")
+		}
+
+
 }
 
-
+}
 
 extension ItemsViewController {
 	func showMessage(msg:String)
@@ -103,20 +111,18 @@ extension ItemsViewController {
 
 	override func viewDidAppear(_ animated:Bool)
 	{
-		showMessage(SampleData.mensaje)
+		showMessage(msg:SampleData.mensaje)
 		super.viewDidAppear(animated)
 	}  
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-    if frc! = nil {
-        return frc.sections!.count
+    if sections! = nil {
+        return sections!.count
     }
     return 0
 }
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let sections = self.frc?.sections else {
-        fatalError("No sections in fetchedResultsController")
-    }
+    
     let sectionInfo = sections[section]
     return sectionInfo.numberOfObjects
   }
@@ -126,8 +132,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
                                              for: indexPath) as! ItemCell
     
-    guard let item = self.frc.object(at: indexPath) else {
-		showMessage("Attempt to configure cell without a managed object")
+    guard let item = (self.junk as? NSFetchedResultsController).object(at: indexPath) else {
+		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
     cell.item = item
