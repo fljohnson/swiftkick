@@ -38,6 +38,7 @@ class ItemsViewController: UITableViewController {
   
 var frc: NSFetchedResultsController<Shoplist>? = nil
 var itemlist:[Shopitem] = []
+var fired:Bool = false
 }
 
 // MARK: - IBActions
@@ -70,10 +71,14 @@ extension ItemsViewController {
 
 
 private func setupTableView() {
+		if(!fired)
+		{
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         tableView.delegate = self
         setupDataSource()
+			fired = true
+		}
 }
 
 private func setupDataSource() {
@@ -81,9 +86,13 @@ private func setupDataSource() {
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"name == %@","List B")
         
-        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
         do {
-			try frc?.performFetch()
+			try frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+			if(frc != nil)
+			{
+				frc?.performFetch()
+			}
 
 			let mess = self.frc?.fetchedObjects?[0].items
 			if(mess == nil)
