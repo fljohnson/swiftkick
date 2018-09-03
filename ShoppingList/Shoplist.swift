@@ -39,10 +39,10 @@ class Shoplist:NSManagedObject {
   //var items: Set<Shopitem> = []
 
 
-	func update(name:String?, id:Int32 ?)
+	func update(name:String?, id:Int32?)
 	{
 		self.name = name	
-		if(id != null && id != lid)
+		if(id != nil && id != lid)
 		{
 			self.lid = id
 		}
