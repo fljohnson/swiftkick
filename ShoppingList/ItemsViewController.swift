@@ -84,9 +84,9 @@ private func setupTableView() {
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-        request.predicate = NSPredicate(format:"name == %@","List B")
+        request.predicate = NSPredicate(format:"lid == %@","2")
         
-        //frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
 		if(frc == nil)
 		{
 			showMessage(msg:"frc is nil")
