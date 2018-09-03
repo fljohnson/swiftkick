@@ -139,10 +139,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 	
 	
 
-    guard let item = itemlist[indexPath.row] else {
-		showMessage(msg:"Attempt to configure cell without a managed object")
-        fatalError("Attempt to configure cell without a managed object")
-    }
+    let item = itemlist[indexPath.row]
     cell.item = item
     return cell
   }
