@@ -37,6 +37,7 @@ class ItemsViewController: UITableViewController {
 
   
 var frc: NSFetchedResultsController<Shoplist>? = nil
+var itemlist:[Shopitem?] = []
 }
 
 // MARK: - IBActions
@@ -83,7 +84,10 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-			
+			itemlist = []
+		    for hit in self.frc?.fetchedObjects?[0].items {
+				itemlist.append[hit]
+			}	
 		}
 		catch {
 			showMessage(msg:"Failed to fetch entities: \(error)")
@@ -114,30 +118,29 @@ extension ItemsViewController {
 override func numberOfSections(in tableView: UITableView) -> Int {
 	
     if frc != nil {
-		var mess = frc?.sections!.count
-		if (mess == nil)
+		var mess:Int = 0
+		
+		if (frc?.sections!.count != nil)
 		{
-			mess = 0
+			mess = frc?.sections!.count!
 		}
-		return mess as Int!
+		return mess
     }
     return 0
 }
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let sections = frc?.sections else {
-		    showMessage(msg:"No sections in fetchedResultsController")
-		    fatalError("No sections in fetchedResultsController")
-	}
-    let sectionInfo = sections[section]
-    return sectionInfo.numberOfObjects
+	return itemlist.count
   }
   
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
                                              for: indexPath) as! ItemCell
-    
-    guard let item = self.frc?.fetchedObjects?[0].items[indexPath.row] else {
+
+	
+	
+
+    guard let item = itemlist[indexPath.row] else {
 		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
