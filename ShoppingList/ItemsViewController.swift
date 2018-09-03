@@ -86,13 +86,13 @@ private func setupDataSource() {
 			try frc?.performFetch()
 
 			let mess = self.frc?.fetchedObjects?[0].items
-			if(mess != nil)
+			if(mess == nil)
 			{
 				showMessage(msg:"items relationship is nil")
 			}
 			else
 			{
-				showMessage(msg:"items relationship has \(mess.count) members")
+				showMessage(msg:"items relationship has \(mess!.count) members")
 			}
 			let mess2 = mess?.sorted {
 				return ($0.qty < $1.qty)
