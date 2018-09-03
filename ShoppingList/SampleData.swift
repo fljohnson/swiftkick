@@ -158,7 +158,7 @@ static var mensaje: String = "Hello World"
 				list:Shoplist,
 				name:String,
 				qty:Float, 
-				detail:String?,
+				detail:String? = nil,
 				rowtotal:Float){
 				
 		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Shopitem", into: context) as? Shopitem else {
