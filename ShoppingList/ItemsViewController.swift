@@ -85,9 +85,11 @@ private func setupDataSource() {
         do {
 			try frc?.performFetch()
 			itemlist = []
-		    for hit in self.frc?.fetchedObjects?[0].items! {
+			var gotem = self.frc?.fetchedObjects?[0].items
+		    for hit in gotem {
 				itemlist.append(hit)
-			}	
+			}
+
 		}
 		catch {
 			showMessage(msg:"Failed to fetch entities: \(error)")
@@ -140,7 +142,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 	
 	
 
-    guard let item = itemlist[indexPath.row] else {
+    guard let item = self.frc?.fetchedObjects?[0].items.subscript(indexPath.row) else {
 		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
