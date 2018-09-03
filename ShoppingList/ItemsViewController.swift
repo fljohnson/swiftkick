@@ -106,7 +106,7 @@ private func setupDataSource() {
 			}
 			else
 			{
-				showMessage(msg:"fetched has \(fetchedlists.count)")
+				showMessage(msg:"fetched has \(fetchedlists!.count)")
 			}
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
