@@ -84,7 +84,7 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-/*
+
 			let mess = self.frc?.fetchedObjects?[0].items
 			let mess2 = mess?.sorted {
 				return ($0.qty < $1.qty)
@@ -93,7 +93,7 @@ private func setupDataSource() {
 			{
 				itemlist = mess2!
 			}
-*/
+
 		}
 		catch {
 			showMessage(msg:"Failed to fetch entities: \(error)")
