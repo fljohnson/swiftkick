@@ -77,7 +77,7 @@ private func setupTableView() {
         tableView.estimatedRowHeight = 44
         tableView.delegate = self
         setupDataSource()
-			fired = true
+			//fired = true
 		}
 }
 
@@ -124,8 +124,8 @@ private func setupDataSource() {
 			fatalError("Failed to fetch entities: \(error)")
 		}
 		
-
-
+		
+showMessage(msg:"\(itemlist.count) net items")
 }
 
 }
@@ -154,6 +154,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     return 0
 }
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
 	return itemlist.count
   }
   
