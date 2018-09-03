@@ -116,13 +116,7 @@ extension ItemsViewController {
 override func numberOfSections(in tableView: UITableView) -> Int {
 	
     if frc != nil {
-		var mess:Int = 0
-		
-		if (frc?.sections!.count != nil)
-		{
-			mess = frc?.sections!.count
-		}
-		return mess
+		return 1
     }
     return 0
 }
