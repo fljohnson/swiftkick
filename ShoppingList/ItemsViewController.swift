@@ -132,6 +132,7 @@ extension ItemsViewController {
 	override func viewDidAppear(_ animated:Bool)
 	{
 		showMessage(msg:SampleData.mensaje)
+		setupTableView()
 		super.viewDidAppear(animated)
 	}  
 
