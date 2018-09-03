@@ -38,6 +38,7 @@ class Shopitem:NSManagedObject {
   var qty:Float = 0.0
   var detail: String? = nil
   var rowtotal:Float = 0.0
+//var added:Double = Date().timeIntervalSince1970
   
   
 
@@ -47,7 +48,7 @@ class Shopitem:NSManagedObject {
 		self.name = name
 		self.qty = qty
 		self.rowtotal = rowtotal
-		self.detail = detail	
+		self.detail = detail
 	}
 	
 }
