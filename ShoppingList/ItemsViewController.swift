@@ -85,7 +85,7 @@ private func setupDataSource() {
         do {
 			try frc?.performFetch()
 			let mess = self.frc?.fetchedObjects?[0].items
-			itemlist = mess?.sorted {
+			itemlist = mess?.sorted! {
 				return ($0.qty < $1.qty)
 			}
 
