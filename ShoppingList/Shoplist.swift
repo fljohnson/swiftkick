@@ -44,7 +44,7 @@ class Shoplist:NSManagedObject {
 		self.name = name	
 		if(id != nil && id != lid)
 		{
-			self.lid = id
+			self.lid = id!
 		}
 		
 	}

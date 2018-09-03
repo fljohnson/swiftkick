@@ -152,7 +152,7 @@ static var mensaje: String = "Hello World"
 				fatalError("Error: Failed to create a new List Item object!")
 			}
 		rv.update(name:name,qty:qty,detail:detail,rowtotal:rowtotal)
-		list.items.insert(rv)	
+		//list.items.insert(rv)	
 				
     }
 
