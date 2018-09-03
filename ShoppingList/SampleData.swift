@@ -134,7 +134,8 @@ static var mensaje: String = "Hello World"
 	static func generateList(context:NSManagedObjectContext,name:String, id:Int32) -> Shoplist? {
 
 		do{
-			try var rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist
+			var rv: Shoplist? = nil
+			try rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist
 			if(rv != nil)
 			{
 				rv?.update(name:name, id:id)   
