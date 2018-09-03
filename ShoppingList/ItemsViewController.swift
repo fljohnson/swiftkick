@@ -77,12 +77,13 @@ private func setupTableView() {
 
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Shoplist")
+        let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"name == %@","List B")
         
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
+			
 		}
 		catch {
 			showMessage(msg:"Failed to fetch entities: \(error)")
@@ -118,7 +119,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 		{
 			mess = 0
 		}
-		return mess as Int
+		return mess as! Int
     }
     return 0
 }
@@ -136,7 +137,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
                                              for: indexPath) as! ItemCell
     
-    guard let item = self.frc?.object(at: indexPath) else {
+    guard let item = self.frc?.fetchedObjects?[0].items[indexPath.row] else {
 		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
