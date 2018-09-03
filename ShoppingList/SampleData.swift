@@ -134,7 +134,7 @@ static var mensaje: String = "Hello World"
 	static func generateList(context:NSManagedObjectContext,name:String, id:Int32) -> Shoplist? {
 
 		do{
-			try rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist
+			try var rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist
 			if(rv != nil)
 			{
 				rv?.update(name:name, id:id)   
@@ -147,9 +147,9 @@ static var mensaje: String = "Hello World"
 		}
 		catch {
 		                mensaje = ("Error: Failed to create a new Shopping List object: \(error)")
-		                return nil
+		         
 		}
-		return rv
+		return nil	
 	}
 	
 	static func addToList(context:NSManagedObjectContext,
