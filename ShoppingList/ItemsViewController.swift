@@ -84,7 +84,7 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-			itemlist = self.frc?.fetchedObjects?[0].items.sorted(by: <)
+			itemlist = self.frc?.fetchedObjects?[0].items.sorted(by: Shopitem.qty)
 
 		}
 		catch {
