@@ -88,7 +88,10 @@ private func setupDataSource() {
 			let mess2 = mess?.sorted {
 				return ($0.qty < $1.qty)
 			}
-			itemlist = mess2
+			if(mess2 != nil)
+			{
+				itemlist = mess2!
+			}
 
 		}
 		catch {
