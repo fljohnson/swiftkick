@@ -36,7 +36,7 @@ class ItemsViewController: UITableViewController {
   // MARK: - Properties
 
   
-var frc: NSFetchedResultsController<NSFetchRequestResult>? = nil
+var frc: NSFetchedResultsController<Shoplist>? = nil
 }
 
 // MARK: - IBActions
@@ -119,7 +119,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 		{
 			mess = 0
 		}
-		return mess as! Int
+		return mess as Int!
     }
     return 0
 }
