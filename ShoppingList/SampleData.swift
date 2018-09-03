@@ -94,8 +94,9 @@ static var mensaje: String = "Hello World"
 				generateList(context:taskContext, name:"List B",id:2),
 				generateList(context:taskContext, name:"List C",id:3)
 			]
-
-		
+//add item(s) to "List B"
+		addToList(rv[1],name:"Gala apples",qty:3,rowtotal:1.89)
+		addToList(rv[1],name:"Orange juice",qty:1,rowtotal:2.25)
 		do {
 		    try taskContext.save() //that's counterintuitive
 		} catch {
@@ -164,7 +165,7 @@ static var mensaje: String = "Hello World"
 				fatalError("Error: Failed to create a new List Item object!")
 			}
 		rv.update(name:name,qty:qty,detail:detail,rowtotal:rowtotal)
-		//list.items.insert(rv)	
+		list.items.insert(rv)	
 				
     }
 
