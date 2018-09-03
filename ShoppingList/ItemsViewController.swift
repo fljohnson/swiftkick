@@ -77,7 +77,7 @@ private func setupTableView() {
         tableView.estimatedRowHeight = 44
         tableView.delegate = self
         setupDataSource()
-			//fired = true
+			fired = true
 		}
 }
 
@@ -85,17 +85,24 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"lid == %@","2")
-        
+
+		
+
+/*        
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
 		if(frc == nil)
 		{
 			showMessage(msg:"frc is nil")
 			return
 		}
+*/
         do {
-			try frc?.performFetch()
+			//try frc?.performFetch()
+			var fetchedlists: [Shoplist]? = nil
+			try fetchedlists = SampleData.persistentContainer.viewContext.fetch(request)
 
-			let mess = self.frc?.fetchedObjects?[0].items
+			//let mess = self.frc?.fetchedObjects?[0].items
+			let mess = fetchedlists?[0].items
 			if(mess == nil)
 			{
 				showMessage(msg:"items relationship is nil")
