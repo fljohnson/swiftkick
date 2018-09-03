@@ -35,12 +35,18 @@ class Shoplist:NSManagedObject {
   
   // MARK: - Properties
   var name: String?
-  var items: Set<Shopitem> = []
+ var lid:Int32 = -1
+  //var items: Set<Shopitem> = []
 
 
-	func update(name:String?)
+	func update(name:String?, id:Int32 ?)
 	{
 		self.name = name	
+		if(id != null && id != lid)
+		{
+			self.lid = id
+		}
+		
 	}
 	
 }
