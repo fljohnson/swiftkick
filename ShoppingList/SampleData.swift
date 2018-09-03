@@ -84,7 +84,7 @@ static var mensaje: String = "Hello World"
   
   static func generateSampleData()  {
 	let taskContext = persistentContainer.viewContext
-	var rv: [Shoplist] = []
+	var rv: [Shoplist?] = []
 
 	if(taskContext != nil)
 {
