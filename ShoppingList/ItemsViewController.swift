@@ -124,8 +124,8 @@ private func setupDataSource() {
 			fatalError("Failed to fetch entities: \(error)")
 		}
 		
-		
-showMessage(msg:"\(itemlist.count) net items")
+
+
 }
 
 }
