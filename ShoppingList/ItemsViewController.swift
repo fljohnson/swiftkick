@@ -100,7 +100,15 @@ private func setupDataSource() {
 			//try frc?.performFetch()
 			var fetchedlists: [Shoplist]? = nil
 			try fetchedlists = SampleData.persistentContainer.viewContext.fetch(request)
-
+			if(fetchedlists == nil)
+			{
+				showMessage(msg:"fetched is nil")
+			}
+			else
+			{
+				showMessage(msg:"fetched has \(fetchedlists.count)")
+			}
+				
 			//let mess = self.frc?.fetchedObjects?[0].items
 			let mess = fetchedlists?[0].items
 			if(mess == nil)
@@ -149,9 +157,15 @@ extension ItemsViewController {
 	override func viewDidAppear(_ animated:Bool)
 	{
 		showMessage(msg:SampleData.mensaje)
-		setupTableView()
+		
 		super.viewDidAppear(animated)
 	}  
+
+override func viewWillAppear(_ animated: Bool) 
+{ 
+	setupTableView()
+ //getData() tableView.reloadData() 
+} 
 
 override func numberOfSections(in tableView: UITableView) -> Int {
 	
