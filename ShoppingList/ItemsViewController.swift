@@ -37,7 +37,7 @@ class ItemsViewController: UITableViewController {
 
   
 var frc: NSFetchedResultsController<Shoplist>? = nil
-var itemlist:[Shopitem?] = []
+var itemlist:[Shopitem]? = nil
 }
 
 // MARK: - IBActions
@@ -84,7 +84,7 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-			itemlist = self.frc?.fetchedObjects?[0].items.sorted {
+			itemlist = self.frc?.fetchedObjects?[0].items?.sorted {
 				return ($0.qty < $1.qty)
 			}
 
