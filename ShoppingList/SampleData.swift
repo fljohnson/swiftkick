@@ -138,7 +138,7 @@ static var mensaje: String = "Hello World"
 			rv.update(name:name, id:id)            
 		}
 		catch {
-		                mensaje = ("Error: Failed to create a new Shopping List object: \(error)"")
+		                mensaje = ("Error: Failed to create a new Shopping List object: \(error)")
 		                return nil
 		}
 		return rv
