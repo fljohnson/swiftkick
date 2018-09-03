@@ -95,8 +95,8 @@ static var mensaje: String = "Hello World"
 				generateList(context:taskContext, name:"List C",id:3)
 			]
 //add item(s) to "List B"
-		addToList(context:taskContext,list:rv[1],name:"Gala apples",qty:3,rowtotal:1.89)
-		addToList(context:taskContext,list:rv[1],name:"Orange juice",qty:1,rowtotal:2.25)
+		addToList(context:taskContext,list:rv[1]!,name:"Gala apples",qty:3,rowtotal:1.89)
+		addToList(context:taskContext,list:rv[1]!,name:"Orange juice",qty:1,rowtotal:2.25)
 		do {
 		    try taskContext.save() //that's counterintuitive
 		} catch {
