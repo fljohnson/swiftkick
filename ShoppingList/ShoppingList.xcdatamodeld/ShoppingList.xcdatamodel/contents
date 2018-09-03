@@ -3,9 +3,7 @@
     <entity name="Shoplist" representedClassName=".Shoplist" syncable="YES">
         <attribute name="name" optional="NO" attributeType="String" syncable="YES"/>
 		<attribute name="lid" optional="NO" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="NO" syncable="YES"/>
-<!--
         <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="Shopitem" inverseName="shoplist" inverseEntity="Shopitem" syncable="YES"/>
--->
         <compoundIndexes>
             <compoundIndex>
                 <index value="name"/>
