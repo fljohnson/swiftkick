@@ -75,7 +75,7 @@ private func setupTableView() {
 		{
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-       // tableView.delegate = self
+        tableView.delegate = self
         setupDataSource()
 			fired = true
 		}
@@ -86,7 +86,12 @@ private func setupDataSource() {
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
         request.predicate = NSPredicate(format:"name == %@","List B")
         
-        frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        //frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+		if(frc == nil)
+		{
+			showMessage(msg:"frc is nil")
+			return
+		}
         do {
 			try frc?.performFetch()
 
