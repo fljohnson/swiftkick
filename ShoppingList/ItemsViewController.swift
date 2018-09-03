@@ -84,7 +84,8 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-			itemlist = self.frc?.fetchedObjects?[0].items.sorted {
+			let mess = self.frc?.fetchedObjects?[0]?.items
+			itemlist = mess?.sorted {
 				return ($0.qty < $1.qty)
 			}
 
