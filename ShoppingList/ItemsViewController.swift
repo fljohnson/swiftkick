@@ -85,7 +85,7 @@ private func setupDataSource() {
         do {
 			try frc?.performFetch()
 			itemlist = []
-		    for hit in self.frc?.fetchedObjects?[0].items {
+		    for hit in self.frc?.fetchedObjects?[0].items? {
 				itemlist.append[hit]
 			}	
 		}
@@ -122,7 +122,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 		
 		if (frc?.sections!.count != nil)
 		{
-			mess = frc?.sections!.count!
+			mess = frc?.sections!.count
 		}
 		return mess
     }
