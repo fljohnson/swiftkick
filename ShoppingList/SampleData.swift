@@ -101,7 +101,7 @@ static var mensaje: String = "Hello World"
 		} catch {
 			
 			//fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
-			mensaje=("Error:Blew up trying to save in SampleData::generateListData(): \(error)")
+			//mensaje=("Error:Blew up trying to save in SampleData::generateListData(): \(error)")
 
 		}
 		
@@ -134,7 +134,7 @@ static var mensaje: String = "Hello World"
 	static func generateList(context:NSManagedObjectContext,name:String, id:Int32) -> Shoplist? {
 		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Shoplist", into: context) as? Shoplist else {
 						
-		                mensaje = ("Error: Failed to create a new Shopping List object!")
+		                mensaje = ("Error: Failed to create a new Shopping List object: \(error)")
 		                return nil
 		            }
 		rv.update(name:name, id:id)            
