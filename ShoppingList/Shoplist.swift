@@ -35,7 +35,7 @@ class Shoplist:NSManagedObject {
   
   // MARK: - Properties
   var name: String?
-  var items: Set<Shopitem> = []
+  var items: Set<Shopitem?> = []
 
 
 	func update(name:String?)

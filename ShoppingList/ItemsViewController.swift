@@ -84,11 +84,7 @@ private func setupDataSource() {
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: SampleData.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
 			try frc?.performFetch()
-			itemlist = []
-			var gotem = self.frc?.fetchedObjects?[0].items
-		    for hit in gotem {
-				itemlist.append(hit)
-			}
+			itemlist = self.frc?.fetchedObjects?[0].items.sorted()
 
 		}
 		catch {
@@ -124,7 +120,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 		
 		if (frc?.sections!.count != nil)
 		{
-			mess = frc?.sections!.count!
+			mess = frc?.sections!.count
 		}
 		return mess
     }
@@ -142,7 +138,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 	
 	
 
-    guard let item = self.frc?.fetchedObjects?[0].items.subscript(indexPath.row) else {
+    guard let item = itemlist[indexPath.row] else {
 		showMessage(msg:"Attempt to configure cell without a managed object")
         fatalError("Attempt to configure cell without a managed object")
     }
