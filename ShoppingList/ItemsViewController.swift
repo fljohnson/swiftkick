@@ -123,15 +123,16 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
-			var thelist:Shoplist? = nil
+			var thelist:Shoplist? = fetchedlists![0]
 
+			/*
 			for(suspect in fetchedlists?)
 			{
 				if(suspect.name == "List B")
 				{
 					thelist = suspect
 				}
-			}
+			}*/
 
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
