@@ -124,18 +124,18 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
-/*
 			else
 			{
 				SampleData.mensaje="fetched has \(fetchedlists![0].listname)"
 				return
 			}
-*/
+
 
 			var thelist:Shoplist? = nil
 
 			var feedback:String = ""
-			for suspect in fetchedlists?
+/*
+			for suspect in fetchedlists
 			{
 				feedback += "|" + suspect.listname 
 				if(suspect.listname == "List B")
@@ -143,6 +143,7 @@ private func setupDataSource() {
 					thelist = suspect
 				}
 			}
+*/
 			if(thelist == nil)
 			{
 				SampleData.mensaje="Missed with \(feedback)"
