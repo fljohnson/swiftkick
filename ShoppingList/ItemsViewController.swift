@@ -85,9 +85,9 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-		var weher: String? = "List B" 
-		var aha: NSPredicate = NSPredicate(format:"listname = %@", weher)
-		
+		var weher: String = "List B" 
+		var aha: NSPredicate = NSPredicate(format:"listname = 'List B'")
+/*		
         do {
 			try request.predicate = aha
 		}
@@ -95,7 +95,7 @@ private func setupDataSource() {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
-
+*/
 		
 
 		
@@ -121,7 +121,7 @@ private func setupDataSource() {
 			
 			if(fetchedlists!.count == 0)
 			{
-				SampleData.mensaje="fetched has no records of \(weher)"
+				SampleData.mensaje="fetched has no records"
 				return
 			}
 /*
@@ -151,7 +151,11 @@ private func setupDataSource() {
 				return
 			}
 
-				
+			var wasahit="NO"
+			if( aha.evaluate(with: thelist))
+			{
+				wasahit="YES"
+			}	
 			//let mess = self.frc?.fetchedObjects?[0].items
 			let mess = thelist?.items
 			if(mess == nil)
@@ -161,7 +165,7 @@ private func setupDataSource() {
 			}
 			else
 			{
-				SampleData.mensaje="items relationship has \(mess!.count) members"
+				SampleData.mensaje="items relationship has \(mess!.count) members \(wasahit)"
 			}
 			let mess2 = mess?.sorted {
 				return ($0.qty < $1.qty)
