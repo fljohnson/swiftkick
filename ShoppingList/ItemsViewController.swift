@@ -116,16 +116,18 @@ private func setupDataSource() {
 				return
 
 			}
-			else
-			{
-				SampleData.mensaje="fetched has \(fetchedlists!.count)"
-				return
-			}
+			
 			if(fetchedlists!.count == 0)
 			{
 				SampleData.mensaje="fetched has no records"
 				return
 			}
+			else
+			{
+				SampleData.mensaje="fetched has \(fetchedlists![0].name)"
+				return
+			}
+
 			var thelist:Shoplist? = fetchedlists![0]
 
 			/*
