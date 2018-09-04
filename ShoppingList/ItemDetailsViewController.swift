@@ -81,7 +81,7 @@ class ItemDetailsViewController: UITableViewController {
         // Used the text from the First View Controller to set the label
 		if(item != nil)
 		{
-			nameTextField.text = item?.name
+			nameTextField.text = item?.itemname
 		}
 		else
 		{

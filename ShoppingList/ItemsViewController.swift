@@ -85,15 +85,15 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-		let weher = "List B"
+		let weher = "List B" as NSString
 		
-        /*do {
-			try request.predicate = NSPredicate(format:"name == %@",weher)
+        do {
+			try request.predicate = NSPredicate(format:"listname == %@",weher)
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
-		}*/
+		}
 		
 
 		
@@ -122,18 +122,22 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
-			
+			else
+			{
+				SampleData.mensaje="fetched has \(fetchedlists![0].listname)"
+				return
+			}
 
-			var thelist:Shoplist? = nil
+			var thelist:Shoplist? = fetchedlists![0]
 
-			
+			/*
 			for(suspect in fetchedlists?)
 			{
-				if(suspect.name == "List B")
+				if(suspect.listname == "List B")
 				{
 					thelist = suspect
 				}
-			}
+			}*/
 
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
@@ -153,7 +157,7 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				SampleData.mensaje="List \(thelist?.name) has \(itemlist.count) sorted items"
+				SampleData.mensaje="List \(thelist?.listname) has \(itemlist.count) sorted items"
 			}
 			else
 			{

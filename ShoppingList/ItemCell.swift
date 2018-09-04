@@ -42,7 +42,7 @@ class ItemCell: UITableViewCell {
     didSet {
       guard let item = item else { return }
       
-      nameLabel.text = item.name
+      nameLabel.text = item.itemname
       
     }
   }
