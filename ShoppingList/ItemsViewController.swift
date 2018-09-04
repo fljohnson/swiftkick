@@ -86,15 +86,15 @@ private func setupDataSource() {
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
 		let weher = "List B"
-		/*
+		
         do {
-			try request.predicate = NSPredicate(format:"Shoplist.name == %@",weher)
+			try request.predicate = NSPredicate(format:"name == %@",weher)
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
-		*/
+		
 
 		
 
