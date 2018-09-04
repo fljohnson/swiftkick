@@ -84,7 +84,7 @@ private func setupTableView() {
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-        //request.predicate = NSPredicate(format:"lid == %@","2")
+        request.predicate = NSPredicate(format:"lid = %@",[2])
 
 		
 
