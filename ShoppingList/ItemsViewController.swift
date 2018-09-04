@@ -88,7 +88,7 @@ private func setupDataSource() {
 		let weher = "List B" as String
 		
         do {
-			try request.predicate = NSPredicate(format:"listname = %@",weher)
+			try request.predicate = NSPredicate(format:"listname = 'List B'")
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
