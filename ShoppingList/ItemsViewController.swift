@@ -84,7 +84,7 @@ private func setupTableView() {
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-        request.predicate = NSPredicate(format:"lid == %@","2")
+        //request.predicate = NSPredicate(format:"lid == %@","2")
 
 		
 
@@ -102,22 +102,31 @@ private func setupDataSource() {
 			try fetchedlists = SampleData.persistentContainer.viewContext.fetch(request)
 			if(fetchedlists == nil)
 			{
-				showMessage(msg:"fetched is nil")
+				SampleData.mensaje="fetched is nil"
+				return
+
 			}
 			else
 			{
-				showMessage(msg:"fetched has \(fetchedlists!.count)")
+				SampleData.mensaje="fetched has \(fetchedlists!.count)"
 			}
+			if(fetchedlists!.count == 0)
+			{
+				SampleData.mensaje="fetched has no records"
+				return
+			}
+			
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
 			let mess = fetchedlists?[0].items
 			if(mess == nil)
 			{
-				showMessage(msg:"items relationship is nil")
+				SampleData.mensaje="items relationship is nil"
+				return
 			}
 			else
 			{
-				showMessage(msg:"items relationship has \(mess!.count) members")
+				SampleData.mensaje="items relationship has \(mess!.count) members"
 			}
 			let mess2 = mess?.sorted {
 				return ($0.qty < $1.qty)
@@ -125,18 +134,18 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				showMessage(msg:"\(itemlist.count) sorted items")
+				SampleData.mensaje="\(itemlist.count) sorted items"
 			}
 			else
 			{
-				showMessage(msg:"Goofed sorting items")
+				SampleData.mensaje="Goofed sorting items"
 			}
 
 
 		}
 		catch {
-			showMessage(msg:"Failed to fetch entities: \(error)")
-			fatalError("Failed to fetch entities: \(error)")
+			SampleData.mensaje="Failed to fetch entities: \(error)"
+			//fatalError("Failed to fetch entities: \(error)")
 		}
 		
 
