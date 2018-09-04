@@ -85,10 +85,10 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-		let weher = "List B" 
+		let weher = "List B" as String
 		
         do {
-			try request.predicate = NSPredicate(format:"listname = 'List  B'")
+			try request.predicate = NSPredicate(format:"listname = %@",weher)
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
@@ -131,7 +131,7 @@ private func setupDataSource() {
 			var thelist:Shoplist? = fetchedlists![0]
 
 			/*
-			for(suspect in fetchedlists?)
+			for suspect in fetchedlists?
 			{
 				if(suspect.listname == "List B")
 				{
