@@ -136,7 +136,7 @@ private func setupDataSource() {
 
 			var feedback:String = ""
 
-			for suspect in fetchedlists
+			for suspect in fetchedlists!
 			{
 				feedback += "|" + suspect.listname 
 				if(suspect.listname == "List B")
