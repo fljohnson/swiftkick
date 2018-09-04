@@ -34,16 +34,16 @@ import CoreData
 class Shopitem:NSManagedObject {
   
   // MARK: - Properties
-  var name: String? = nil
+  var name: String = ""
   var qty:Float = 0.0
-  var detail: String? = nil
+  var detail: String = ""
   var rowtotal:Float = 0.0
 //var added:Double = Date().timeIntervalSince1970
   
   
 
 
-	func update(name:String,qty:Float, detail:String?,rowtotal:Float)
+	func update(name:String,qty:Float, detail:String = "",rowtotal:Float)
 	{
 		self.name = name
 		self.qty = qty
