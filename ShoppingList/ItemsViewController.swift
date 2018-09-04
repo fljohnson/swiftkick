@@ -86,14 +86,15 @@ private func setupDataSource() {
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
 		let weher = "List B" as String
-		
+	/*	
         do {
-			try request.predicate = NSPredicate(format:"listname = 'List B'")
+			try  = NSPredicate(format:"listname = 'List B'")
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
+*/
 		
 
 		
@@ -122,22 +123,30 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
+/*
 			else
 			{
 				SampleData.mensaje="fetched has \(fetchedlists![0].listname)"
 				return
 			}
+*/
 
-			var thelist:Shoplist? = fetchedlists![0]
+			var thelist:Shoplist? = nil
 
-			/*
+			var feedback = ""
 			for suspect in fetchedlists?
 			{
+				feedback += "|"+ suspect.listname 
 				if(suspect.listname == "List B")
 				{
 					thelist = suspect
 				}
-			}*/
+			}
+			if(thelist == nil)
+			{
+				SampleData.mensaje="Missed with \(feedback)"
+				return
+			}
 
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
