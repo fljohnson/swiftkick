@@ -84,7 +84,7 @@ private func setupTableView() {
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-        request.predicate = NSPredicate(format:"lid = %@",[2])
+        //request.predicate = NSPredicate(format:"lid == %@","2")
 
 		
 
@@ -118,7 +118,7 @@ private func setupDataSource() {
 			
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
-			let mess = fetchedlists?[0].items
+			let mess = fetchedlists?[1].items
 			if(mess == nil)
 			{
 				SampleData.mensaje="items relationship is nil"
@@ -134,7 +134,7 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				SampleData.mensaje="\(itemlist.count) sorted items"
+				SampleData.mensaje="List \(fetchedlists?[1].name) has \(itemlist.count) sorted items"
 			}
 			else
 			{
