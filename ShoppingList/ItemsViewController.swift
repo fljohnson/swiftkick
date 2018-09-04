@@ -85,9 +85,9 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-		var weher: String = "List B" 
-		var aha: NSPredicate = NSPredicate(format:"listname = 'List B'")
-/*		
+		var weher: String? = "List B" 
+		var aha: NSPredicate = NSPredicate(format:"listname = %@", weher)
+		
         do {
 			try request.predicate = aha
 		}
@@ -95,7 +95,7 @@ private func setupDataSource() {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
-*/
+
 		
 
 		
@@ -121,7 +121,7 @@ private func setupDataSource() {
 			
 			if(fetchedlists!.count == 0)
 			{
-				SampleData.mensaje="fetched has no records"
+				SampleData.mensaje="fetched has no records of \(weher)"
 				return
 			}
 /*
