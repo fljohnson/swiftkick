@@ -34,12 +34,12 @@ import CoreData
 class Shoplist:NSManagedObject {
   
   // MARK: - Properties
-  var name: String?
+  var name: String = ""
  var lid:Int32 = -1
  var items: Set<Shopitem> = []
 
 
-	func update(name:String?, id:Int32?)
+	func update(name:String, id:Int32?)
 	{
 		self.name = name	
 		if(id != nil && id != lid)
