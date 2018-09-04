@@ -122,11 +122,7 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
-			else
-			{
-				SampleData.mensaje="fetched has \(fetchedlists![0].name)"
-				return
-			}
+			
 
 			var thelist:Shoplist? = nil
 
