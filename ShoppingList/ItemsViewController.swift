@@ -173,7 +173,7 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				SampleData.mensaje="List \(thelist?.listname) has \(itemlist.count) sorted items"
+				SampleData.mensaje="List \(thelist?.listname) \(wasahit) has \(itemlist.count) sorted items"
 			}
 			else
 			{
