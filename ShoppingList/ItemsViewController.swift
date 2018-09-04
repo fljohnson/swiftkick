@@ -115,10 +115,19 @@ private func setupDataSource() {
 				SampleData.mensaje="fetched has no records"
 				return
 			}
-			
+			var thelist:Shoplist? = nil
+
+			for(suspect in fetchedlists?)
+			{
+				if(suspect.name == "List B")
+				{
+					thelist = suspect
+				}
+			}
+
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
-			let mess = fetchedlists?[1].items
+			let mess = thelist?.items
 			if(mess == nil)
 			{
 				SampleData.mensaje="items relationship is nil"
@@ -134,7 +143,7 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				SampleData.mensaje="List \(fetchedlists?[1].name) has \(itemlist.count) sorted items"
+				SampleData.mensaje="List \(thelist?.name) has \(itemlist.count) sorted items"
 			}
 			else
 			{
