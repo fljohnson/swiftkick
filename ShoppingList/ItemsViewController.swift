@@ -83,8 +83,16 @@ private func setupTableView() {
 
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
+		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-        //request.predicate = NSPredicate(format:"lid == %@","2")
+		let weher = "List B"
+        do {
+			try request.predicate = NSPredicate(format:"name == %@",weher)
+		}
+		catch {
+			SampleData.mensaje="Predicate failure: \(error)"
+			return
+		}
 
 		
 
@@ -99,7 +107,7 @@ private func setupDataSource() {
         do {
 			//try frc?.performFetch()
 			var fetchedlists: [Shoplist]? = nil
-			try fetchedlists = SampleData.persistentContainer.viewContext.fetch(request)
+			try fetchedlists = SampleData.persistentContainer.viewContext.fetch(request) as! [Shoplist]
 			if(fetchedlists == nil)
 			{
 				SampleData.mensaje="fetched is nil"
