@@ -85,14 +85,16 @@ private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
-		let weher = "List"
+		let weher = "List B"
+		/*
         do {
-			try request.predicate = NSPredicate(format:"name BEGINSWITH %@",weher)
+			try request.predicate = NSPredicate(format:"Shoplist.name == %@",weher)
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
+		*/
 
 		
 
