@@ -87,13 +87,13 @@ private func setupDataSource() {
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
 		let weher = "List B"
 		
-        do {
+        /*do {
 			try request.predicate = NSPredicate(format:"name == %@",weher)
 		}
 		catch {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
-		}
+		}*/
 		
 
 		
@@ -128,16 +128,16 @@ private func setupDataSource() {
 				return
 			}
 
-			var thelist:Shoplist? = fetchedlists![0]
+			var thelist:Shoplist? = nil
 
-			/*
+			
 			for(suspect in fetchedlists?)
 			{
 				if(suspect.name == "List B")
 				{
 					thelist = suspect
 				}
-			}*/
+			}
 
 				
 			//let mess = self.frc?.fetchedObjects?[0].items
