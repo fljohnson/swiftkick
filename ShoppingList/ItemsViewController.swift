@@ -84,9 +84,9 @@ private func setupTableView() {
 private func setupDataSource() {
         //let regionType = filterSegmentedControl.regionType
 		
-        let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
+        let request = NSFetchRequest<Shoplist> = Shoplist.fetchRequest()
 		var weher: String = "List B" 
-		var aha: NSPredicate = NSPredicate(format:"lid = %@",[2])
+		var aha: NSPredicate = NSPredicate(format:"listname == %@",weher! as CVarArg)
 		
         do {
 			try request.predicate = aha
