@@ -86,7 +86,7 @@ private func setupDataSource() {
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
 		var weher: String = "List B" 
-		var aha: NSPredicate = NSPredicate(format:"listname contains[cd] %@",weher)
+		var aha: NSPredicate = NSPredicate(format:"lid = %@",2)
 		
         do {
 			try request.predicate = aha
