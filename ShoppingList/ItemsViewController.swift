@@ -86,8 +86,8 @@ private func setupDataSource() {
 		
         let request = NSFetchRequest<Shoplist>(entityName: "Shoplist")
 		var weher: String = "List B" 
-		var aha: NSPredicate = NSPredicate(format:"listname = 'List B'")
-/*		
+		var aha: NSPredicate = NSPredicate(format:"listname contains[cd] %@",weher)
+		
         do {
 			try request.predicate = aha
 		}
@@ -95,7 +95,7 @@ private func setupDataSource() {
 			SampleData.mensaje="Predicate failure: \(error)"
 			return
 		}
-*/
+
 		
 
 		
@@ -173,7 +173,7 @@ private func setupDataSource() {
 			if(mess2 != nil)
 			{
 				itemlist = mess2!
-				SampleData.mensaje="List \(thelist?.listname) \(wasahit) has \(itemlist.count) sorted items"
+				SampleData.mensaje="List \(weher) \(wasahit) has \(itemlist.count) sorted items"
 			}
 			else
 			{
